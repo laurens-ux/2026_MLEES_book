@@ -60,3 +60,98 @@ comments rechecked: the 1.1 solutions quote the first two records, 14.7 °F and 
 
 Station metadata: <https://mesonet.agron.iastate.edu/sites/site.php?station=IIB&network=IA_ASOS>.
 IEM terms of use: <https://mesonet.agron.iastate.edu/disclaimer.php>.
+
+## `part-I/uscrn_daily_2017_ny_millbrook_3w.txt`
+
+One year of daily observations from the U.S. Climate Reference Network (USCRN), station
+Millbrook 3 W, New York. Used in 1.5's lecture, section "Reading Data Files: Weather Station Data"
+and everything after it.
+
+| Field | Value |
+|---|---|
+| Station | WBANNO 64756, Millbrook 3 W, New York, US |
+| Location | 41.79° N, 73.74° W |
+| Period | 2017-01-01 to 2017-12-31, one row per day, 365 rows plus one header line |
+| Variables | 28 columns, as listed in NOAA's `HEADERS.txt`: daily air temperature, precipitation, solar radiation, surface temperature, relative humidity, and soil moisture and soil temperature at 5, 10, 20, 50 and 100 cm |
+| Missing values | −9999.0 (−99.000 in the three-decimal soil-moisture columns). No data at all on 2017-10-04; soil moisture at 5 cm is missing on 48 days, 43 of them in January and February |
+| Format | whitespace-separated text, variable-width columns; dates as `YYYYMMDD` |
+| Size | 79650 bytes |
+| md5 | `5129dcfd19300eb8d4d8d1673fcfbcb4` (the hash the 2025 edition pinned) |
+| sha256 | `f97637cf9909548a10843e9af352470b8aa1f9df5d971aa74e7478d63c7eca07` |
+| Licence | the Zenodo mirror is CC-BY-4.0; the underlying NOAA data are a US government product |
+
+### Origin
+
+The 2025 edition's pandas tutorial
+(<https://freddy0218.github.io/2025_MLEES_book_online/notebook/W3_S1_Tutorial.html>) fetched
+`data.txt` with pooch from the Zenodo record "Mirror of data from NOAA U.S. Climate Reference
+Network for Research Computing in Earth Science" (R. Abernathey,
+<https://doi.org/10.5281/zenodo.5564850>), pinned by md5. Downloaded from that record on
+2026-10-05; the md5 matched. The file was committed here under a descriptive name, bytes unchanged.
+
+### Upstream source
+
+`data.txt` is the mirror's `CRND0103-2017-NY_Millbrook_3_W.txt` with one header line of column
+names prepended; below the header the two are byte-identical (checked 2026-10-05). Compared the
+same day against NOAA's current file,
+<https://www.ncei.noaa.gov/pub/data/uscrn/products/daily01/2017/CRND0103-2017-NY_Millbrook_3_W.txt>:
+16 of 365 rows differ, all between 2017-10-06 and 2017-12-30, all in the soil-moisture columns,
+and never by more than 0.001 m³ m⁻³. NOAA reprocessed those values after the mirror was made.
+Column definitions and the missing-value codes are in
+<https://www.ncei.noaa.gov/pub/data/uscrn/products/daily01/README.txt>.
+
+### Before replacing it
+
+A fresh NOAA download has no header line and slightly different soil-moisture values, so
+`read_csv` would need `names=` and the hash in 1.5's fetch cell would change. Values quoted in 1.5's
+prose — 364 temperature values, 48 soil-moisture gaps, the `fillna(0)` bias — would need
+rechecking.
+
+## `part-III/climate_invariant_*` (5.3)
+
+Normalization constants and the vertical grid for the climate-invariant parameterization exercise
+in 5.3. Five small files, all of them read by 5.3's data cells with `pooch` from this repo.
+
+| File | Size | sha256 |
+|---|---|---|
+| `climate_invariant_norm_raw.nc` | 23,634 B | `ee3c669928031af1a03ec3bc61373107575173decf66ede9b0c3b8568214ca0f` |
+| `climate_invariant_norm_RH.nc` | 23,634 B | `4d5275746eb1aad4a2279e16784befaa4beeab5a2aa6545e0e85437c8d73476f` |
+| `climate_invariant_norm_BMSE.nc` | 22,914 B | `396df61a24f6111acc1b908cdda3d10e0649d3eb551de860b3ebeb4419adc514` |
+| `climate_invariant_norm_LHF_nsDELQ.nc` | 23,634 B | `514413a6ab0f33039df5f815a925cf8916454d288f384615050131f1bdc8b06f` |
+| `climate_invariant_hyam_hybm.npz` | 982 B | `760ea10734da9382d0c367407ef0469ba651dd96f3d4b6290a8736b093038fca` |
+
+The four `.nc` files hold the mean, standard deviation, minimum and maximum of each input and output
+variable, once for the raw inputs and once for each rescaled input (relative humidity `RH`, plume
+buoyancy `BMSE`, latent heat flux over moisture disequilibrium `LHF_nsDELQ`), computed over the cold
+climate. They are byte-identical copies of the files the 2025 edition's notebook fetched from
+SharePoint; each sha256 above equals the `known_hash` that notebook pinned, checked on 2026-10-09.
+The `.npz` file holds the 30 hybrid-coordinate coefficients `hyam` and `hybm` of the climate model's
+vertical grid. The 2025 edition fetched them as a pickle (676 bytes, sha256
+`343339f9b0fd4d92a8a31aabf774c0a17b6ac904feb6a2cd03e19ae4ff2bd329`); the arrays were re-saved with
+`numpy.savez` so that the notebook does not unpickle a file, and compared equal element by element.
+
+### Not committed: the two climate simulations
+
+`EfHoI_pZ…` (cold, file name `2023_15_02_RG_TEST_M4K_reduced.nc`) and `Eeq_n6Qv…` (warm,
+`2023_15_02_RG_TEST_P4K_reduced.nc`) are fetched by 5.3 from a personal SharePoint share (`tom_beucler_unil_ch`),
+the same pattern as 10.4. Streamed and hashed on 2026-10-09; both resolve to a
+NetCDF (HDF5) file of 1,822,652,866 bytes (1.70 GiB) with 2,398,208 samples and 184 stacked
+variables.
+
+| Climate | sha256 |
+|---|---|
+| cold | `7b793afdd866a2e9b0db8fdb5029a88d557bf98525601275f5a335e95b26ac1a` |
+| warm | `211db8ae89904f1fa3e2f17dc623bc6f5c6156cf24f4e3a42d92660ab1790fd4` |
+
+Both equal the hashes the 2025 notebook pinned. The links carry no `?e=` token, so they do not expire
+by themselves, but the owner can still revoke them; the pinned hash makes a revoked link fail with a
+checksum error instead of saving a sign-in page. The files are far over the 50 MB ceiling and no
+git-lfs is configured, so they stay remote. A Zenodo deposit would make them durable and citable.
+
+### Dropped from the 2025 notebook
+
+The 2025 notebook also fetched three 22 to 26 MB files (`RH_train_open`, `BMSE_train_open`,
+`LHFnsDELQ_train_open`, 15,400 samples each) only to build "normalization generators", of which it
+used the `sub` and `div` attributes. Those two arrays depend on the normalization files above, not on
+the samples, so 5.3 computes them from the `.nc` files directly and does not download the three
+files. Checked on 2026-10-09: the arrays are equal to the ones the 2025 code produces.

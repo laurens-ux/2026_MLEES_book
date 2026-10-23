@@ -75,36 +75,52 @@ project:
           children:
             - file: part-I/1.1-environment-and-data-types.ipynb
               children:
-              - file: part-I/1.1-environment-and-data-types-exercises.ipynb
-              # - file: part-I/1.1-environment-and-data-types-solutions.ipynb
+              - file: part-I/1.1-environment-and-data-types-practice-exercises.ipynb
+              - file: part-I/1.1-environment-and-data-types-environmental-exercises.ipynb
+              # - file: part-I/1.1-environment-and-data-types-practice-solutions.ipynb
+              # - file: part-I/1.1-environment-and-data-types-environmental-solutions.ipynb
             - file: part-I/1.2-data-structures-and-control-flow.ipynb
               children:
-              - file: part-I/1.2-data-structures-and-control-flow-exercises.ipynb
-              # - file: part-I/1.2-data-structures-and-control-flow-solutions.ipynb
+              - file: part-I/1.2-data-structures-and-control-flow-practice-exercises.ipynb
+              - file: part-I/1.2-data-structures-and-control-flow-environmental-exercises.ipynb
+              # - file: part-I/1.2-data-structures-and-control-flow-practice-solutions.ipynb
+              # - file: part-I/1.2-data-structures-and-control-flow-environmental-solutions.ipynb
             - file: part-I/1.3-numpy.ipynb
               children:
-              - file: part-I/1.3-numpy-exercises.ipynb
-              # - file: part-I/1.3-numpy-solutions.ipynb
+              - file: part-I/1.3-numpy-practice-exercises.ipynb
+              - file: part-I/1.3-numpy-environmental-exercises.ipynb
+              # - file: part-I/1.3-numpy-practice-solutions.ipynb
+              # - file: part-I/1.3-numpy-environmental-solutions.ipynb
             - file: part-I/1.4-matplotlib-and-xarray.ipynb
               children:
-              - file: part-I/1.4-matplotlib-and-xarray-exercises.ipynb
-              # - file: part-I/1.4-matplotlib-and-xarray-solutions.ipynb
+              - file: part-I/1.4-matplotlib-and-xarray-practice-exercises.ipynb
+              - file: part-I/1.4-matplotlib-and-xarray-environmental-exercises.ipynb
+              # - file: part-I/1.4-matplotlib-and-xarray-practice-solutions.ipynb
+              # - file: part-I/1.4-matplotlib-and-xarray-environmental-solutions.ipynb
             - file: part-I/1.5-pandas.ipynb
               children:
-              - file: part-I/1.5-pandas-exercises.ipynb
-              # - file: part-I/1.5-pandas-solutions.ipynb
+              - file: part-I/1.5-pandas-practice-exercises.ipynb
+              - file: part-I/1.5-pandas-environmental-exercises.ipynb
+              # - file: part-I/1.5-pandas-practice-solutions.ipynb
+              # - file: part-I/1.5-pandas-environmental-solutions.ipynb
             - file: part-I/1.6-geospatial-vector-data.ipynb
               children:
-              - file: part-I/1.6-geospatial-vector-data-exercises.ipynb
-              # - file: part-I/1.6-geospatial-vector-data-solutions.ipynb
+              - file: part-I/1.6-geospatial-vector-data-practice-exercises.ipynb
+              - file: part-I/1.6-geospatial-vector-data-environmental-exercises.ipynb
+              # - file: part-I/1.6-geospatial-vector-data-practice-solutions.ipynb
+              # - file: part-I/1.6-geospatial-vector-data-environmental-solutions.ipynb
             - file: part-I/1.7-oop-for-environmental-systems.ipynb
               children:
-              - file: part-I/1.7-oop-for-environmental-systems-exercises.ipynb
-              # - file: part-I/1.7-oop-for-environmental-systems-solutions.ipynb
+              - file: part-I/1.7-oop-for-environmental-systems-practice-exercises.ipynb
+              - file: part-I/1.7-oop-for-environmental-systems-environmental-exercises.ipynb
+              # - file: part-I/1.7-oop-for-environmental-systems-practice-solutions.ipynb
+              # - file: part-I/1.7-oop-for-environmental-systems-environmental-solutions.ipynb
             - file: part-I/1.8-statistical-foundations-and-ml.ipynb
               children:
-              - file: part-I/1.8-statistical-foundations-and-ml-exercises.ipynb
-              # - file: part-I/1.8-statistical-foundations-and-ml-solutions.ipynb
+              - file: part-I/1.8-statistical-foundations-and-ml-practice-exercises.ipynb
+              - file: part-I/1.8-statistical-foundations-and-ml-environmental-exercises.ipynb
+              # - file: part-I/1.8-statistical-foundations-and-ml-practice-solutions.ipynb
+              # - file: part-I/1.8-statistical-foundations-and-ml-environmental-solutions.ipynb
         - file: part-I/bonus.md
           title: "Bonus material"
           children:
@@ -152,11 +168,11 @@ project:
     - file: part-III/part-III.md
       children:
         - file: part-III/ch-5-intro.md
-          title: "5) Artificial Neural Networks"
+          title: "5) Artificial Neural Networks and Surrogate Modeling"
           children:
             - file: part-III/5.1-introduction-to-artificial-neural-networks.ipynb
             - file: part-III/5.2-artificial-neural-networks-with-pytorch-exercises.ipynb
-            # - title: "5.3) Physically-Informed Climate Modeling" — deferred, see edits_from_previous/todo-list.md
+            - file: part-III/5.3-physically-informed-climate-modeling-exercises.ipynb
 
         - file: part-III/ch-6-intro.md
           title: "6) Convolutional Neural Networks and Remote Sensing"
@@ -183,7 +199,7 @@ project:
               title: "8.1) What are Graph Neural Networks (GNNs)?"
             - file: part-III/8.2-graph-neural-networks-with-pytorch-exercises.ipynb
               title: "8.2) (Exercises) Graph Neural Networks with PyTorch"
-            # - title: "8.3) (Exercises) Neural Weather Prediction" — deferred, see edits_from_previous/todo-list.md
+            - file: part-III/8.3-neural-weather-prediction-exercises.ipynb
 
     # Part IV: Towards Trustworthy AI
     - file: part-IV/part-IV.md
